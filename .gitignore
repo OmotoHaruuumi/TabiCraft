@@ -35,3 +35,7 @@ my-trips/
 .DS_Store
 .vscode/
 *.swp
+
+# Python bytecode
+__pycache__/
+*.pyc
