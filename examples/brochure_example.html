@@ -62,6 +62,7 @@
   .slot.opt .body{border-left:2px dashed var(--accent2);padding-left:10px}
   .slot.opt .title{font-weight:500;color:var(--accent2)}
   .optbadge{font-size:.68rem;background:#eef4f1;color:var(--accent2);padding:1px 7px;border-radius:999px;margin-right:6px}
+  .must{font-size:.68rem;background:#f3e3d6;color:var(--accent);padding:1px 7px;border-radius:999px;margin-left:6px}
   .toolbar{position:fixed;top:12px;right:12px;z-index:50;background:rgba(255,255,255,.92);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow)}
   .toolbar button{border:none;background:var(--accent);color:#fff;padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.78rem}
   @media print{.no-print{display:none!important}body{background:#fff;padding:0}.hero{border-radius:0}.wrap{max-width:none}.card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.day,.slot{break-inside:avoid}}
@@ -88,6 +89,8 @@
   <div class="card">
     <h2><span class="bar"></span>旅の概要</h2>
     <div class="grid">
+      <div class="item"><b>コンセプト</b>2都市を鉄道で一方向に。午前は名所、午後はカフェと街歩きで緩急をつける</div>
+      <div class="item"><b>外せない3つ</b>コロッセオ／ウフィツィ美術館／親友とワインバーの夜</div>
       <div class="item"><b>宿（ローマ）</b>旧市街・スペイン広場徒歩圏のブティックホテル（朝食付）</div>
       <div class="item"><b>宿（フィレンツェ）</b>ドゥオモ徒歩5分の小規模ホテル</div>
       <div class="item"><b>通貨</b>ユーロ(EUR)・1EUR≒170円</div>
@@ -140,7 +143,7 @@
     </div>
 
     <div class="day">
-      <div class="dayhead">Day 2 — 9/19(土) 古代ローマ巡り</div>
+      <div class="dayhead">Day 2 — 9/19(土) 古代ローマ巡り<span class="must">コロッセオ</span></div>
       <div class="imgslot dayimg">
         <img src="images/day2.jpg" alt="Day2" onerror="this.closest('.imgslot').classList.add('empty')">
         <div class="ph">この日の写真：<code>images/day2.jpg</code> を入れてください</div>
@@ -168,8 +171,8 @@
         <div class="note">予定が押したらここで吸収。詰め込みすぎない緩衝</div>
       </div></div>
       <div class="slot"><div class="time">夜</div><div class="body">
-        <div class="title">ワインバーで一杯 → ホテルへ戻る</div>
-        <div class="note">夜に親友とゆっくり話す時間を確保</div>
+        <div class="title">ワインバーで一杯 → ホテルへ戻る<span class="must">親友の夜</span></div>
+        <div class="note">夜に親友とゆっくり話す時間を確保（外せない3つの一つ）</div>
       </div></div>
     </div>
 
@@ -195,7 +198,7 @@
     </div>
 
     <div class="day">
-      <div class="dayhead">Day 4 — 9/21(月) フィレンツェへ移動・ウフィツィ</div>
+      <div class="dayhead">Day 4 — 9/21(月) フィレンツェへ移動・ウフィツィ<span class="must">ウフィツィ</span></div>
       <div class="imgslot dayimg">
         <img src="images/day4.jpg" alt="Day4" onerror="this.closest('.imgslot').classList.add('empty')">
         <div class="ph">この日の写真：<code>images/day4.jpg</code> を入れてください</div>
