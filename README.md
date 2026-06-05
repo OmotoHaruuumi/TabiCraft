@@ -22,11 +22,11 @@
 > ひと言ふた言あなたの意見を足して、「ここは譲れない」を語るほど、しおりはあなたらしく、株も上がります。
 
 <p align="center">
-  <a href="examples/brochure_example.png">
-    <img src="examples/brochure_example_preview.png" width="400" alt="旅のしおりの完成イメージ">
+  <a href="examples/しおり_example.pdf">
+    <img src="examples/しおり_example_preview.png" width="400" alt="旅のしおりの完成イメージ">
   </a>
   <br>
-  <sub>完成する旅のしおりの一例（クリックで<a href="examples/brochure_example.png">全体PNG</a>）。親友とローマ＆フィレンツェ5泊6日。<br>サンプル写真は CC0／パブリックドメイン（<a href="examples/images/CREDITS.md">出典一覧</a>）。</sub>
+  <sub>完成する旅のしおりの一例（クリックで<a href="examples/しおり_example.pdf">PDF全体</a>）。親友とローマ＆フィレンツェ5泊6日。<br>サンプル写真は CC0／パブリックドメイン（<a href="examples/images/CREDITS.md">出典一覧</a>）。</sub>
 </p>
 
 ---
@@ -50,6 +50,9 @@
 - **候補を自分から提案** — 行きたい場所・泊まりたい宿の候補を、こちらから先回りで出します。
 - **一番大変な所を代行** — 選んだ「やりたいこと」を、実現可能性チェックと具体的なスケジュールにまとめ上げます。
 - **余裕のある日程** — 旅はハプニングの連続。必須は2〜3個に絞り、「時間が余ったらこれ」を散りばめます。
+- **ムダな移動を避ける** — 案ごとに地理でクラスタリングし、往復・二度手間（ジグザグ）を自動でチェック。初日は到着地点の近くから、最終日は帰路（空港）方向で締めます。
+- **宿はあなたの流儀で** — 「宿そのものにこだわる」か「泊まるエリアを先に決める」かを聞いて進め方を変えます（エリア派には宿2択をしおりに用意）。
+- **やることを取りこぼさない** — 出発前の手配を「予約・手配チェックリスト（タスク／締切／順番）」に集約します。
 
 ---
 
@@ -62,13 +65,22 @@
 | Phase 0 プロファイル | 好みを学習・蓄積（使うほど賢く） | [profile_example.md](examples/profile_example.md) |
 | 入力 wishlist | 行きたい所・食べたい物を列挙 | [wishlist_example.md](examples/wishlist_example.md) |
 | Phase 1 基本情報 | 行き先・泊数・到着/帰宅を確定 | [trip-basics_example.md](examples/trip-basics_example.md) |
-| Phase 2 組み合わせ | 案を多数生成＋気づき提案 | [combinations_example.md](examples/combinations_example.md) |
+| Phase 2 組み合わせ | 案を多数生成＋気づき提案＋主要スポットの簡単ガイド | [combinations_example.md](examples/combinations_example.md) ／ 共有用 [提案プラン集（PDF）](examples/提案プラン集_example.pdf) |
 | ↳ スポット調査表 | 調べた所要時間・金額・アクセス・方角を表に蓄積し再利用 | [spots_example.md](examples/spots_example.md) |
-| Phase 3 作り込み | 余裕ある現実的な日程へ | [plan_example.md](examples/plan_example.md) |
-| Phase 4 しおり | 写真を入れて映えるしおりを生成 | [画像で見る](examples/brochure_example.png) ／ [HTMLソース](examples/brochure_example.html) |
+| Phase 3 作り込み | 余裕ある現実的な日程へ（予約・手配チェックリスト付き） | [plan_example.md](examples/plan_example.md) |
+| Phase 4 しおり | 写真を入れて映えるしおりを生成 | [しおり（PDF）](examples/しおり_example.pdf) ／ [HTMLソース](examples/brochure_example.html) |
 
-完成イメージは上の画像（[全体PNG](examples/brochure_example.png)）の通り。
-地図リンクやPDF保存ボタンが動く**インタラクティブ版**を見たいときは、GitHub上のHTMLは“ソース表示”になってしまうので、次のどちらかで開いてください：
+### 共有用の成果物（PNGプレビュー → クリックでPDF）
+
+<p align="center">
+  <a href="examples/提案プラン集_example.pdf"><img src="examples/提案プラン集_example_preview.png" width="320" alt="提案プラン集の例"></a>
+  &nbsp;&nbsp;
+  <a href="examples/しおり_example.pdf"><img src="examples/しおり_example_preview.png" width="320" alt="しおりの例"></a>
+  <br>
+  <sub>左：Phase2 <b>提案プラン集</b>（同行者に「どの案がいい？」と相談）／右：Phase4 <b>しおり</b>。どちらも画像はプレビュー、クリックでPDF全体（写真・地図リンク込み）。</sub>
+</p>
+
+スマホへ送るなら**PDFが確実**（1ファイルで写真も内包）。地図リンクやPDF保存ボタンが動く**インタラクティブHTML版**を見たいときは、GitHub上のHTMLは“ソース表示”になるので次のどちらかで：
 
 - htmlpreview（設定不要）：`https://htmlpreview.github.io/?https://github.com/<ユーザー名>/tabicraft/blob/main/examples/brochure_example.html`（`<ユーザー名>`を自分のGitHubアカウントに置換）
 - リポジトリを clone して `examples/brochure_example.html` をブラウザで開く
@@ -86,10 +98,16 @@
 
 ---
 
-## しおりは HTML / PDF / PNG で保存できる
+## しおりは HTML / PDF / 単一HTML で共有できる
 
-- しおりを開いて右上の **PDFで保存** ボタン（ブラウザ印刷 → PDF）
-- まとめて書き出し: `~/.claude/skills/trip-brochure/export.sh output/<旅行名>.html output/<旅行名>.pdf`（`.png` 指定で画像）
+しおりは `output/<旅行名>しおり.html`、組み合わせ案は `output/<旅行名>提案プラン集.pdf` として書き出されます。
+
+- **スマホへ送るなら PDF が確実**（1ファイルで写真も内包・誰でも開ける）。
+  - しおりを開いて右上の **PDFで保存** ボタン（ブラウザ印刷 → PDF）でもOK。
+  - まとめて書き出し: `~/.claude/skills/trip-brochure/export.sh output/<旅行名>しおり.html output/<旅行名>しおり.pdf`（`.png` 指定で画像）
+- **レスポンシブのまま1ファイルで渡したい**なら、画像を埋め込んだ単一HTML：
+  - `~/.claude/skills/trip-brochure/embed_images.py output/<旅行名>しおり.html`
+- ⚠️ 素の `しおり.html` 単体を送ると画像が別フォルダ参照で消えるので、共有時は必ず上のどちらかに。
   ※ Chrome/Chromium/Edge のヘッドレスを利用。無ければブラウザ印刷を案内します。
 
 ---

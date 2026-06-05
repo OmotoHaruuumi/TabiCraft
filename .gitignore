@@ -11,8 +11,10 @@ spots.md
 plans/
 output/
 
-# 共有用に書き出したPDF（combinations.pdf など実データの成果物。output/ 配下も保険で二重除外）
+# 共有用に書き出したPDF（実データの成果物。output/ 配下も保険で二重除外）
 *.pdf
+# ただし公開見本（examples/）のPDFは除外しない（README表示用）
+!examples/*.pdf
 
 # 学習プロファイル（好みの個人データ）
 profiles/
@@ -29,6 +31,7 @@ my-trips/
 # ───────────────────────────────────────────────
 # 公開する見本は除外しない（_example 名は上のどのパターンにも一致しない）
 #   examples/wishlist_example.md / profile_example.md / brochure_example.html
+#   examples/しおり_example.pdf / 提案プラン集_example.pdf（PDFは上の !examples/*.pdf で再許可）
 # ───────────────────────────────────────────────
 
 # OS / エディタ
