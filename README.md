@@ -65,6 +65,16 @@
 | Phase 3 作り込み | 余裕ある現実的な日程へ（予約・手配チェックリスト付き） | [plan_example.md](examples/plan_example.md) |
 | Phase 4 しおり | 写真を入れて映えるしおりを生成 | [しおり（PDF）](examples/しおり_example.pdf) ／ [HTMLソース](examples/brochure_example.html) |
 
+### 要望リスト（wishlist）の入力例
+
+最初に書く「やりたいことリスト」はこんな感じ。難しく考えず、思いつくまま書けばOKです。
+
+<p align="center">
+  <a href="examples/wishlist_example.md"><img src="examples/wishlist_example_preview.png" width="540" alt="wishlist（要望リスト）の入力例"></a>
+  <br>
+  <sub>外せないもの・行きたい所（カテゴリ分け）・宿の条件＆候補・食・個人メモまで自由に。<a href="examples/wishlist_example.md">テキスト版はこちら</a>。</sub>
+</p>
+
 ### 共有用の成果物（PNGプレビュー → クリックでPDF）
 
 <p align="center">
