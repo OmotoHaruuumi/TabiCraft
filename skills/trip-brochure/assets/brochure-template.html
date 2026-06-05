@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TRIP_TITLE}} 旅のしおり</title>
+<style>
+  /* === テーマ変数：行き先の雰囲気で生成時に差し替える === */
+  :root{
+    --bg:#fdfaf5; --card:#ffffff; --ink:#2b2b2b; --sub:#7a7268;
+    --accent:#e8743b;      /* メインアクセント */
+    --accent2:#1f9e8f;     /* サブアクセント */
+    --line:#ece5da; --shadow:0 6px 24px rgba(0,0,0,.06);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.7;padding-bottom:48px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  /* ヒーロー */
+  .hero{background:linear-gradient(135deg,var(--accent),var(--accent2));
+        color:#fff;padding:40px 20px 32px;border-radius:0 0 28px 28px;text-align:center}
+  .hero h1{font-size:1.9rem;letter-spacing:.02em}
+  .hero .meta{margin-top:10px;font-size:.95rem;opacity:.95}
+  .hero .route{margin-top:14px;font-size:.9rem;background:rgba(255,255,255,.18);
+        display:inline-block;padding:6px 14px;border-radius:999px}
+
+  /* カード共通 */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+        box-shadow:var(--shadow);padding:18px 18px;margin:18px 0}
+  .card h2{font-size:1.15rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .card h2 .bar{width:4px;height:20px;background:var(--accent);border-radius:2px}
+
+  /* 概要グリッド */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .grid .item{background:#faf6f0;border-radius:12px;padding:10px 12px}
+  .grid .item b{display:block;font-size:.78rem;color:var(--sub);margin-bottom:2px}
+
+  /* 予算 */
+  .budget{width:100%;border-collapse:collapse;font-size:.92rem}
+  .budget td{padding:7px 4px;border-bottom:1px dashed var(--line)}
+  .budget td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+  .budget .total td{font-weight:700;border-bottom:none;color:var(--accent)}
+  .tag{font-size:.7rem;padding:1px 6px;border-radius:999px;margin-left:6px}
+  .t-fixed{background:#dff5e8;color:#1f8a4c}   /* 実査 */
+  .t-ref{background:#fff3d6;color:#b07d00}     /* 参考~ */
+  .t-est{background:#eee;color:#777}           /* 推定≈ */
+
+  /* Day タイムライン */
+  .day{margin:18px 0}
+  .day .dayhead{font-weight:700;font-size:1.05rem;color:var(--accent2);
+        padding:6px 0;border-bottom:2px solid var(--accent2);margin-bottom:10px}
+  .slot{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .slot:last-child{border-bottom:none}
+  .slot .time{flex:0 0 64px;font-size:.82rem;color:var(--sub);padding-top:2px}
+  .slot .body{flex:1}
+  .slot .title{font-weight:600}
+  .slot .note{font-size:.85rem;color:var(--sub);margin-top:2px}
+  .mapbtn{display:inline-block;margin-top:6px;font-size:.8rem;text-decoration:none;
+        background:var(--accent);color:#fff;padding:4px 12px;border-radius:999px}
+  .mapbtn:active{opacity:.8}
+
+  /* チェックリスト */
+  ul.check{list-style:none}
+  ul.check li{padding:6px 0 6px 28px;position:relative}
+  ul.check li:before{content:"☐";position:absolute;left:4px;color:var(--accent)}
+
+  .memo{font-size:.9rem;color:var(--ink)}
+  .memo li{margin-left:18px}
+  footer{text-align:center;color:var(--sub);font-size:.8rem;margin-top:28px}
+
+  /* ⏳余ったらコレ / 🪶ゆとり枠（必須と区別） */
+  .slot.opt{opacity:.92}
+  .slot.opt .title{font-weight:500;color:var(--accent2)}
+  .slot.opt .body{border-left:2px dashed var(--accent2);padding-left:10px}
+  .optbadge{font-size:.68rem;background:#eef6f3;color:var(--accent2);padding:1px 7px;border-radius:999px;margin-right:6px}
+
+  /* 保存ツールバー（印刷時は隠す） */
+  .toolbar{position:fixed;top:12px;right:12px;z-index:50;display:flex;gap:8px;align-items:center;
+    background:rgba(255,255,255,.92);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow);font-size:.78rem}
+  .toolbar button{border:none;background:var(--accent);color:#fff;padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.78rem}
+  .toolbar .hint{color:var(--sub)}
+
+  @media print{
+    .no-print{display:none !important}
+    body{background:#fff;padding:0}
+    .hero{border-radius:0}
+    .wrap{max-width:none}
+    .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+    .day,.slot{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <button onclick="window.print()">🖨 PDFで保存</button>
+  <span class="hint">PNGは export.sh で</span>
+</div>
+
+<div class="hero">
+  <h1>{{TRIP_TITLE}}</h1>
+  <div class="meta">{{DATES}} ・ {{NIGHTS}}泊 ・ {{MEMBERS}}</div>
+  <div class="route">{{ROUTE}}</div>
+</div>
+
+<div class="wrap">
+
+  <!-- 概要 -->
+  <div class="card">
+    <h2><span class="bar"></span>旅の概要</h2>
+    <div class="grid">
+      <div class="item"><b>🏨 宿</b>{{HOTELS}}</div>
+      <div class="item"><b>💱 通貨</b>{{CURRENCY}}</div>
+      <div class="item"><b>🚕 移動アプリ</b>{{RIDE_APP}}</div>
+      <div class="item"><b>⚠️ 注意</b>{{SAFETY}}</div>
+    </div>
+  </div>
+
+  <!-- 予算 -->
+  <div class="card">
+    <h2><span class="bar"></span>予算のめやす</h2>
+    <table class="budget">
+      <!-- 行例: <tr><td>交通<span class="tag t-fixed">実査</span></td><td>¥XX,XXX</td></tr> -->
+      {{BUDGET_ROWS}}
+      <tr class="total"><td>合計</td><td>{{BUDGET_TOTAL}}</td></tr>
+    </table>
+    <p class="note" style="font-size:.78rem;color:var(--sub);margin-top:8px">
+      <span class="tag t-fixed">実査</span>確定 / <span class="tag t-ref">参考~</span>相場 / <span class="tag t-est">推定≈</span>概算。出発前に最新価格を要確認。</p>
+  </div>
+
+  <!-- Day別 -->
+  <div class="card">
+    <h2><span class="bar"></span>旅程</h2>
+    <!-- 各日を .day ブロックで繰り返す -->
+    {{DAYS}}
+    <!-- 例:
+    <div class="day">
+      <div class="dayhead">Day 1 — 6/10（木）到着</div>
+      <div class="slot">
+        <div class="time">午後</div>
+        <div class="body">
+          <div class="title">✈️ スワンナプーム空港 到着</div>
+          <div class="note">入国審査・両替・SIM受取</div>
+          <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Suvarnabhumi+Airport&destination=Riva+Surya+Bangkok&travelmode=transit">🗺 宿までの経路</a>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+
+  <!-- 持ち物 -->
+  <div class="card">
+    <h2><span class="bar"></span>持ち物・準備チェック</h2>
+    <ul class="check">{{CHECKLIST}}</ul>
+  </div>
+
+  <!-- 現地メモ -->
+  <div class="card">
+    <h2><span class="bar"></span>現地メモ</h2>
+    <ul class="memo">{{LOCAL_MEMO}}</ul>
+  </div>
+
+  <footer>よい旅を 🌏 — {{TRIP_TITLE}}</footer>
+</div>
+
+</body>
+</html>
