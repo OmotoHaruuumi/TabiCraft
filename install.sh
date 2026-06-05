@@ -9,7 +9,7 @@ SHARED="$HOME/.claude/travel"
 
 echo "▶ スキルを $SKILLS_DST へインストールします"
 mkdir -p "$SKILLS_DST"
-for s in trip-plan trip-profile trip-basics trip-combine trip-refine trip-brochure; do
+for s in trip-plan trip-profile trip-basics trip-combine trip-combine-pdf trip-refine trip-brochure; do
   rm -rf "$SKILLS_DST/$s"
   cp -R "$SRC/skills/$s" "$SKILLS_DST/$s"
   echo "  ✔ $s"
