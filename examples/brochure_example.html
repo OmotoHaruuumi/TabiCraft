@@ -9,14 +9,26 @@
     --bg:#f6f4f0; --card:#ffffff; --ink:#272320; --sub:#7c756c;
     --accent:#8c5a3c; --accent2:#3f6b58;
     --line:#e7e1d8; --shadow:0 6px 24px rgba(0,0,0,.07); --r:16px;
+    --imgbg:#ece6de; --imgborder:#c9bdae;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;padding-bottom:48px}
   .wrap{max-width:760px;margin:0 auto;padding:0 16px}
-  .hero{background:linear-gradient(135deg,#6b4226,#3f6b58);color:#fff;padding:40px 20px 32px;border-radius:0 0 28px 28px;text-align:center}
-  .hero h1{font-size:1.9rem;letter-spacing:.03em}
-  .hero .meta{margin-top:10px;font-size:.95rem;opacity:.95}
-  .hero .route{margin-top:14px;font-size:.9rem;background:rgba(255,255,255,.18);display:inline-block;padding:6px 14px;border-radius:999px}
+
+  .imgslot{position:relative;background:var(--imgbg);overflow:hidden}
+  .imgslot img{display:block;width:100%;height:100%;object-fit:cover}
+  .imgslot .ph{display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:10px;color:#9a9085;font-size:.74rem;border:1px dashed var(--imgborder)}
+  .imgslot.empty img{display:none}
+  .imgslot.empty .ph{display:flex}
+  .imgslot .ph code{background:#fff;padding:2px 7px;border-radius:5px;font-size:.72rem;color:#7a6f62}
+
+  .hero{border-radius:0 0 24px 24px;overflow:hidden;margin-bottom:6px}
+  .hero .imgslot{height:210px}
+  .hero .cap{padding:22px 20px;background:linear-gradient(135deg,#6b4226,#3f6b58);color:#fff;text-align:center}
+  .hero h1{font-size:1.7rem;letter-spacing:.03em}
+  .hero .meta{margin-top:8px;font-size:.95rem;opacity:.95}
+  .hero .route{margin-top:12px;font-size:.88rem;background:rgba(255,255,255,.18);display:inline-block;padding:6px 14px;border-radius:999px}
+
   .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin:18px 0}
   .card h2{font-size:1.15rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
   .card h2 .bar{width:4px;height:20px;background:var(--accent);border-radius:2px}
@@ -31,41 +43,44 @@
   .t-fixed{background:#dff5e8;color:#1f8a4c}
   .t-ref{background:#fff3d6;color:#b07d00}
   .t-est{background:#eee;color:#777}
-  .day{margin:18px 0}
+
+  .day{margin:20px 0}
   .day .dayhead{font-weight:700;font-size:1.05rem;color:var(--accent2);padding:6px 0;border-bottom:2px solid var(--accent2);margin-bottom:10px}
+  .day .dayimg{height:150px;border-radius:12px;margin:0 0 12px}
   .slot{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
   .slot:last-child{border-bottom:none}
-  .slot .time{flex:0 0 64px;font-size:.82rem;color:var(--sub);padding-top:2px}
+  .slot .time{flex:0 0 60px;font-size:.82rem;color:var(--sub);padding-top:2px}
   .slot .body{flex:1}
   .slot .title{font-weight:600}
   .slot .note{font-size:.85rem;color:var(--sub);margin-top:2px}
-  .mapbtn{display:inline-block;margin-top:6px;font-size:.8rem;text-decoration:none;background:var(--accent);color:#fff;padding:4px 12px;border-radius:999px}
+  .linkbtn{display:inline-block;margin-top:6px;font-size:.8rem;text-decoration:none;background:var(--accent);color:#fff;padding:4px 12px;border-radius:999px}
   ul.check{list-style:none}
-  ul.check li{padding:6px 0 6px 28px;position:relative}
-  ul.check li:before{content:"☐";position:absolute;left:4px;color:var(--accent)}
+  ul.check li{padding:6px 0 6px 26px;position:relative}
+  ul.check li:before{content:"□";position:absolute;left:4px;color:var(--accent)}
   .memo li{margin-left:18px;font-size:.9rem}
   footer{text-align:center;color:var(--sub);font-size:.8rem;margin-top:28px}
-  .slot.opt{opacity:.92}
-  .slot.opt .title{font-weight:500;color:var(--accent2)}
   .slot.opt .body{border-left:2px dashed var(--accent2);padding-left:10px}
+  .slot.opt .title{font-weight:500;color:var(--accent2)}
   .optbadge{font-size:.68rem;background:#eef4f1;color:var(--accent2);padding:1px 7px;border-radius:999px;margin-right:6px}
-  .toolbar{position:fixed;top:12px;right:12px;z-index:50;display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.92);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow);font-size:.78rem}
+  .toolbar{position:fixed;top:12px;right:12px;z-index:50;background:rgba(255,255,255,.92);padding:6px 10px;border-radius:999px;box-shadow:var(--shadow)}
   .toolbar button{border:none;background:var(--accent);color:#fff;padding:6px 13px;border-radius:999px;cursor:pointer;font-size:.78rem}
-  .toolbar .hint{color:var(--sub)}
   @media print{.no-print{display:none!important}body{background:#fff;padding:0}.hero{border-radius:0}.wrap{max-width:none}.card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.day,.slot{break-inside:avoid}}
 </style>
 </head>
 <body>
 
-<div class="toolbar no-print">
-  <button onclick="window.print()">🖨 PDFで保存</button>
-  <span class="hint">PNGは export.sh で</span>
-</div>
+<div class="toolbar no-print"><button onclick="window.print()">PDFで保存</button></div>
 
 <div class="hero">
-  <h1>ローマ ＆ フィレンツェ 5泊6日</h1>
-  <div class="meta">2026/9/18(金)〜9/23(水) ・ 5泊 ・ 親友ふたり旅</div>
-  <div class="route">羽田 ✈ ローマ（3泊）→ 🚄 フィレンツェ（2泊）→ 羽田</div>
+  <div class="imgslot">
+    <img src="images/hero.jpg" alt="メイン画像" onerror="this.closest('.imgslot').classList.add('empty')">
+    <div class="ph">メイン画像：<code>images/hero.jpg</code> をこのHTMLと同じ階層の <code>images</code> フォルダに入れてください</div>
+  </div>
+  <div class="cap">
+    <h1>ローマ ＆ フィレンツェ 5泊6日</h1>
+    <div class="meta">2026/9/18(金)〜9/23(水) ・ 5泊 ・ 親友ふたり旅</div>
+    <div class="route">羽田 → ローマ（3泊） → フィレンツェ（2泊） → 羽田</div>
+  </div>
 </div>
 
 <div class="wrap">
@@ -73,12 +88,12 @@
   <div class="card">
     <h2><span class="bar"></span>旅の概要</h2>
     <div class="grid">
-      <div class="item"><b>🏨 宿（ローマ）</b>旧市街・スペイン広場徒歩圏のブティックホテル（朝食付）</div>
-      <div class="item"><b>🏨 宿（フィレンツェ）</b>ドゥオモ徒歩5分の小規模ホテル</div>
-      <div class="item"><b>💱 通貨</b>ユーロ(EUR)・1EUR≒170円</div>
-      <div class="item"><b>🚕 移動アプリ</b>市内は徒歩＋地下鉄、必要時 Uber/FREENOW。鉄道は Trenitalia(Frecciarossa)</div>
-      <div class="item"><b>🎫 予約メモ</b>コロッセオ/バチカン/ウフィツィ/クーポラは事前予約必須</div>
-      <div class="item"><b>⚠️ 注意</b>主要駅・人混みはスリ対策。貴重品は前持ちバッグへ</div>
+      <div class="item"><b>宿（ローマ）</b>旧市街・スペイン広場徒歩圏のブティックホテル（朝食付）</div>
+      <div class="item"><b>宿（フィレンツェ）</b>ドゥオモ徒歩5分の小規模ホテル</div>
+      <div class="item"><b>通貨</b>ユーロ(EUR)・1EUR≒170円</div>
+      <div class="item"><b>移動アプリ</b>市内は徒歩＋地下鉄、必要時 Uber/FREENOW。鉄道は Trenitalia(Frecciarossa)</div>
+      <div class="item"><b>予約メモ</b>コロッセオ/バチカン/ウフィツィ/クーポラは事前予約必須</div>
+      <div class="item"><b>注意</b>主要駅・人混みはスリ対策。貴重品は前持ちバッグへ</div>
     </div>
   </div>
 
@@ -94,7 +109,7 @@
       <tr><td>予備費<span class="tag t-est">推定≈</span></td><td>¥20,000</td></tr>
       <tr class="total"><td>合計</td><td>¥376,000</td></tr>
     </table>
-    <p class="note" style="font-size:.78rem;color:var(--sub);margin-top:8px">
+    <p style="font-size:.78rem;color:var(--sub);margin-top:8px">
       <span class="tag t-fixed">実査</span>確定 / <span class="tag t-ref">参考~</span>相場 / <span class="tag t-est">推定≈</span>概算。出発前に最新価格を要確認。</p>
   </div>
 
@@ -103,119 +118,143 @@
 
     <div class="day">
       <div class="dayhead">Day 1 — 9/18(金) ローマ到着・夜の街歩き</div>
+      <div class="imgslot dayimg">
+        <img src="images/day1.jpg" alt="Day1" onerror="this.closest('.imgslot').classList.add('empty')">
+        <div class="ph">この日の写真：<code>images/day1.jpg</code> を入れてください</div>
+      </div>
       <div class="slot"><div class="time">午後</div><div class="body">
-        <div class="title">✈️ フィウミチーノ空港 到着（17:00頃）</div>
+        <div class="title">フィウミチーノ空港 到着（17:00頃）</div>
         <div class="note">入国 → レオナルド・エクスプレスでテルミニ駅へ（約32分）→ 旧市街の宿へ</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Fiumicino+Airport+Rome&destination=Spagna+Metro+Rome&travelmode=transit">🗺 空港 → 宿エリア</a>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Fiumicino+Airport+Rome&destination=Spagna+Metro+Rome&travelmode=transit">地図・経路を開く</a>
       </div></div>
       <div class="slot"><div class="time">夕方</div><div class="body">
-        <div class="title">🏨 ブティックホテル（スペイン広場徒歩圏）チェックイン（18:30）</div>
-        <div class="note">荷物を置いて夜の散歩へ。💡夜便なので初日は軽めに</div>
+        <div class="title">ブティックホテル（スペイン広場徒歩圏）チェックイン（18:30）</div>
+        <div class="note">荷物を置いて夜の散歩へ。夜便なので初日は軽めに</div>
       </div></div>
       <div class="slot"><div class="time">夜</div><div class="body">
-        <div class="title">⛲ トレヴィの泉 → 近所のトラットリアでカルボナーラ</div>
+        <div class="title">トレヴィの泉 → 近所のトラットリアでカルボナーラ</div>
         <div class="note">ライトアップが美しい。親友と乾杯で旅のはじまり</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Spagna+Metro+Rome&destination=Trevi+Fountain+Rome&travelmode=walking">🗺 宿 → トレヴィの泉</a>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Spagna+Metro+Rome&destination=Trevi+Fountain+Rome&travelmode=walking">地図・経路を開く</a>
       </div></div>
-      <div class="slot"><div class="time">夜</div><div class="body"><div class="title">🏨 ホテルへ戻る</div></div></div>
+      <div class="slot"><div class="time">夜</div><div class="body"><div class="title">ホテルへ戻る</div></div></div>
     </div>
 
     <div class="day">
       <div class="dayhead">Day 2 — 9/19(土) 古代ローマ巡り</div>
+      <div class="imgslot dayimg">
+        <img src="images/day2.jpg" alt="Day2" onerror="this.closest('.imgslot').classList.add('empty')">
+        <div class="ph">この日の写真：<code>images/day2.jpg</code> を入れてください</div>
+      </div>
       <div class="slot"><div class="time">午前</div><div class="body">
-        <div class="title">🏛 コロッセオ＆フォロ・ロマーノ（9:30入場・事前予約）</div>
-        <div class="note">予約必須／所要2.5h。日差し対策に帽子・水。💡行列回避の希望に対応</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Boutique+Hotel+Spagna+Rome&destination=Colosseum+Rome&travelmode=transit">🗺 宿 → コロッセオ</a>
+        <div class="title">コロッセオ＆フォロ・ロマーノ（9:30入場・事前予約）</div>
+        <div class="note">予約必須／所要2.5h。日差し対策に帽子・水。行列回避の希望に対応</div>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Boutique+Hotel+Spagna+Rome&destination=Colosseum+Rome&travelmode=transit">地図・経路を開く</a>
       </div></div>
       <div class="slot"><div class="time">昼</div><div class="body">
-        <div class="title">🍴 モンティ地区でランチ</div>
+        <div class="title">モンティ地区でランチ</div>
         <div class="note">おしゃれな食堂街。カチョエペペが名物</div>
       </div></div>
       <div class="slot"><div class="time">午後</div><div class="body">
-        <div class="title">🏛 パンテオン → ナヴォーナ広場（街歩き＆カフェ）</div>
-        <div class="note">💡午後はゆっくり志向。ジェラート食べ比べも</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Colosseum+Rome&destination=Pantheon+Rome&travelmode=walking">🗺 コロッセオ → パンテオン</a>
+        <div class="title">パンテオン → ナヴォーナ広場（街歩き＆カフェ）</div>
+        <div class="note">午後はゆっくり志向。ジェラート食べ比べも</div>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Colosseum+Rome&destination=Pantheon+Rome&travelmode=walking">地図・経路を開く</a>
       </div></div>
       <div class="slot opt"><div class="time">夕方</div><div class="body">
-        <div class="title"><span class="optbadge">⏳余ったら</span>スペイン広場・コルソ通りでウィンドウショッピング</div>
+        <div class="title"><span class="optbadge">余ったら</span>スペイン広場・コルソ通りでウィンドウショッピング</div>
         <div class="note">時間と元気があれば。疲れていれば飛ばしてOKのオプション</div>
       </div></div>
       <div class="slot opt"><div class="time">—</div><div class="body">
-        <div class="title"><span class="optbadge">🪶ゆとり枠</span>ホテルでひと休み / 自由時間</div>
+        <div class="title"><span class="optbadge">ゆとり枠</span>ホテルでひと休み / 自由時間</div>
         <div class="note">予定が押したらここで吸収。詰め込みすぎない緩衝</div>
       </div></div>
       <div class="slot"><div class="time">夜</div><div class="body">
-        <div class="title">🍷 ワインバーで一杯 → 🏨 ホテルへ戻る</div>
-        <div class="note">💡「夜に親友とゆっくり話す時間」を確保</div>
+        <div class="title">ワインバーで一杯 → ホテルへ戻る</div>
+        <div class="note">夜に親友とゆっくり話す時間を確保</div>
       </div></div>
     </div>
 
     <div class="day">
       <div class="dayhead">Day 3 — 9/20(日) バチカン</div>
+      <div class="imgslot dayimg">
+        <img src="images/day3.jpg" alt="Day3" onerror="this.closest('.imgslot').classList.add('empty')">
+        <div class="ph">この日の写真：<code>images/day3.jpg</code> を入れてください</div>
+      </div>
       <div class="slot"><div class="time">午前</div><div class="body">
-        <div class="title">🎨 バチカン美術館＆システィーナ礼拝堂（9:00予約）</div>
+        <div class="title">バチカン美術館＆システィーナ礼拝堂（9:00予約）</div>
         <div class="note">予約必須／所要3h。礼拝堂は私語・撮影NG。肩膝を隠す服装で</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Boutique+Hotel+Spagna+Rome&destination=Vatican+Museums&travelmode=transit">🗺 宿 → バチカン美術館</a>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Boutique+Hotel+Spagna+Rome&destination=Vatican+Museums&travelmode=transit">地図・経路を開く</a>
       </div></div>
       <div class="slot"><div class="time">昼</div><div class="body">
-        <div class="title">⛪ サン・ピエトロ大聖堂 → プラティ地区でランチ</div>
+        <div class="title">サン・ピエトロ大聖堂 → プラティ地区でランチ</div>
       </div></div>
       <div class="slot"><div class="time">午後</div><div class="body">
-        <div class="title">☕ トラステヴェレ散策とカフェでひと休み</div>
+        <div class="title">トラステヴェレ散策とカフェでひと休み</div>
         <div class="note">石畳の路地が可愛いエリア。明日の移動に備え早めに戻る</div>
       </div></div>
-      <div class="slot"><div class="time">夜</div><div class="body"><div class="title">🏨 ホテルへ戻る（荷造り）</div></div></div>
+      <div class="slot"><div class="time">夜</div><div class="body"><div class="title">ホテルへ戻る（荷造り）</div></div></div>
     </div>
 
     <div class="day">
       <div class="dayhead">Day 4 — 9/21(月) フィレンツェへ移動・ウフィツィ</div>
+      <div class="imgslot dayimg">
+        <img src="images/day4.jpg" alt="Day4" onerror="this.closest('.imgslot').classList.add('empty')">
+        <div class="ph">この日の写真：<code>images/day4.jpg</code> を入れてください</div>
+      </div>
       <div class="slot"><div class="time">午前</div><div class="body">
-        <div class="title">🚄 ローマ(Termini) → フィレンツェ(S.M.N) 高速鉄道（10:00発／約1.5h）</div>
-        <div class="note">💡早朝発を避け9時以降。指定席。Frecciarossaは景色も楽しい</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Roma+Termini&destination=Firenze+Santa+Maria+Novella&travelmode=transit">🗺 ローマ駅 → フィレンツェ駅</a>
+        <div class="title">ローマ(Termini) → フィレンツェ(S.M.N) 高速鉄道（10:00発／約1.5h）</div>
+        <div class="note">早朝発を避け9時以降。指定席。Frecciarossaは景色も楽しい</div>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Roma+Termini&destination=Firenze+Santa+Maria+Novella&travelmode=transit">地図・経路を開く</a>
       </div></div>
       <div class="slot"><div class="time">昼</div><div class="body">
-        <div class="title">🏨 ドゥオモ徒歩圏のホテル 荷物預け → ランチ</div>
+        <div class="title">ドゥオモ徒歩圏のホテル 荷物預け → ランチ</div>
         <div class="note">チェックインは15時。先に荷物だけ預ける</div>
       </div></div>
       <div class="slot"><div class="time">午後</div><div class="body">
-        <div class="title">🎨 ウフィツィ美術館（14:30予約）</div>
+        <div class="title">ウフィツィ美術館（14:30予約）</div>
         <div class="note">予約必須／ボッティチェリ「ヴィーナスの誕生」。所要2.5h</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Firenze+Santa+Maria+Novella&destination=Uffizi+Gallery+Florence&travelmode=walking">🗺 駅 → ウフィツィ</a>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Firenze+Santa+Maria+Novella&destination=Uffizi+Gallery+Florence&travelmode=walking">地図・経路を開く</a>
       </div></div>
       <div class="slot"><div class="time">夜</div><div class="body">
-        <div class="title">🥩 ビステッカ・アッラ・フィオレンティーナ → 🏨 ホテルへ戻る</div>
-        <div class="note">💡食べたいものリスト反映。要予約の人気店も</div>
+        <div class="title">ビステッカ・アッラ・フィオレンティーナ → ホテルへ戻る</div>
+        <div class="note">食べたいものリスト反映。要予約の人気店も</div>
       </div></div>
     </div>
 
     <div class="day">
       <div class="dayhead">Day 5 — 9/22(火) ドゥオモと夕景</div>
+      <div class="imgslot dayimg">
+        <img src="images/day5.jpg" alt="Day5" onerror="this.closest('.imgslot').classList.add('empty')">
+        <div class="ph">この日の写真：<code>images/day5.jpg</code> を入れてください</div>
+      </div>
       <div class="slot"><div class="time">午前</div><div class="body">
-        <div class="title">⛪ ドゥオモ クーポラ登頂（9:15予約・463段）</div>
+        <div class="title">ドゥオモ クーポラ登頂（9:15予約・463段）</div>
         <div class="note">予約必須。眺望抜群。体力に応じてジョットの鐘楼でも可</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Duomo+Florence&destination=Cattedrale+di+Santa+Maria+del+Fiore+Florence&travelmode=walking">🗺 宿 → ドゥオモ</a>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Duomo+Florence&destination=Cattedrale+di+Santa+Maria+del+Fiore+Florence&travelmode=walking">地図・経路を開く</a>
       </div></div>
       <div class="slot"><div class="time">午後</div><div class="body">
-        <div class="title">🌉 ポンテ・ヴェッキオ → 革製品ショッピング → カフェ</div>
-        <div class="note">💡午後はゆっくり。おみやげもここで</div>
+        <div class="title">ポンテ・ヴェッキオ → 革製品ショッピング → カフェ</div>
+        <div class="note">午後はゆっくり。おみやげもここで</div>
       </div></div>
       <div class="slot"><div class="time">夕方</div><div class="body">
-        <div class="title">🌇 ミケランジェロ広場で夕景</div>
-        <div class="note">街全体を一望する黄金時間。💡早起き苦手でも夕景なら○</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Ponte+Vecchio+Florence&destination=Piazzale+Michelangelo+Florence&travelmode=walking">🗺 ポンテ・ヴェッキオ → 広場</a>
+        <div class="title">ミケランジェロ広場で夕景</div>
+        <div class="note">街全体を一望する黄金時間。早起き苦手でも夕景なら○</div>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Ponte+Vecchio+Florence&destination=Piazzale+Michelangelo+Florence&travelmode=walking">地図・経路を開く</a>
       </div></div>
-      <div class="slot"><div class="time">夜</div><div class="body"><div class="title">🍷 最後の夜、ワインで乾杯 → 🏨 ホテルへ戻る</div></div></div>
+      <div class="slot"><div class="time">夜</div><div class="body"><div class="title">最後の夜、ワインで乾杯 → ホテルへ戻る</div></div></div>
     </div>
 
     <div class="day">
       <div class="dayhead">Day 6 — 9/23(水) 帰国</div>
+      <div class="imgslot dayimg">
+        <img src="images/day6.jpg" alt="Day6" onerror="this.closest('.imgslot').classList.add('empty')">
+        <div class="ph">この日の写真：<code>images/day6.jpg</code> を入れてください</div>
+      </div>
       <div class="slot"><div class="time">午前</div><div class="body">
-        <div class="title">🏨 チェックアウト → 🚄 フィレンツェ → ローマ空港（直通便利用）</div>
+        <div class="title">チェックアウト → フィレンツェ → ローマ空港（直通便利用）</div>
         <div class="note">帰国便に合わせ余裕を持って移動（乗継・保安検査に注意）</div>
-        <a class="mapbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Firenze+Santa+Maria+Novella&destination=Fiumicino+Airport+Rome&travelmode=transit">🗺 フィレンツェ → 空港</a>
+        <a class="linkbtn" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Firenze+Santa+Maria+Novella&destination=Fiumicino+Airport+Rome&travelmode=transit">地図・経路を開く</a>
       </div></div>
-      <div class="slot"><div class="time">午後</div><div class="body"><div class="title">✈️ ローマ発 帰国便</div></div></div>
+      <div class="slot"><div class="time">午後</div><div class="body"><div class="title">ローマ発 帰国便</div></div></div>
     </div>
 
   </div>
@@ -241,12 +280,11 @@
       <li>主要観光は事前予約が基本。当日券狙いは長い行列になりがち。</li>
       <li>テルミニ駅・観光地・満員のバスはスリの定番スポット。リュックは前に。</li>
       <li>都市間は Frecciarossa が速くて快適。指定席なので時刻に余裕を。</li>
-      <li>教会内は服装規定（肌の露出を抑える）。羽織りものを携帯。</li>
-      <li>各日は必須を2〜3個に絞り、⏳「余ったらコレ」を散りばめています。遅延や疲れが出ても気軽に取捨できます。</li>
+      <li>各日は必須を2〜3個に絞り、「余ったらコレ」を散りばめています。遅延や疲れが出ても気軽に取捨できます。</li>
     </ul>
   </div>
 
-  <footer>よい旅を 🌍 — ローマ＆フィレンツェ 親友ふたり旅（これは見本です）</footer>
+  <footer>よい旅を — ローマ＆フィレンツェ 親友ふたり旅（これは見本です）</footer>
 </div>
 
 </body>
