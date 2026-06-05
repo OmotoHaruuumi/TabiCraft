@@ -148,18 +148,6 @@
 → **このリポジトリ内で実際の旅行を計画しても、個人情報は出ていきません。**
 
 ---
-
-## インストール
-
-```bash
-git clone <this-repo>
-cd <this-repo>
-./install.sh
-```
-
-スキルを `~/.claude/skills/` へ、空テンプレを `~/.claude/travel/templates/` へ配置します。
-あとは「**旅行の計画したい**」と話しかけるだけ。
-
 ### ファイル配置
 ```
 ~/.claude/travel/        使い回す（プロファイル・テンプレ／非公開）
