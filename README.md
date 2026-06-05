@@ -4,6 +4,14 @@
 > 「来月ヨーロッパに親友と6泊で行きたいな」**と話しかけるだけ**。
 > 好みのヒアリング → 候補提案 → 日程の作り込み → **ワンタップ地図つきの“かっこいい旅のしおり（HTML/PDF/PNG）”** まで一緒に作ります。
 
+<p align="center">
+  <a href="examples/brochure_example.png">
+    <img src="examples/brochure_example_preview.png" width="400" alt="旅のしおりの完成イメージ">
+  </a>
+  <br>
+  <sub>▲ 完成する旅のしおりの一例（クリックで<a href="examples/brochure_example.png">全体PNG</a>）。親友とローマ＆フィレンツェ5泊6日。</sub>
+</p>
+
 ---
 
 ## ⚡ 使い方は、これだけ
@@ -38,9 +46,12 @@
 | Phase 1 基本情報 | 行き先・泊数・到着/帰宅を確定 | [trip-basics_example.md](examples/trip-basics_example.md) |
 | Phase 2 組み合わせ | 案を多数生成＋気づき提案 | [combinations_example.md](examples/combinations_example.md) |
 | Phase 3 作り込み | 余裕ある現実的な日程へ | [plan_example.md](examples/plan_example.md) |
-| Phase 4 しおり | かっこいい HTML を生成 | **[brochure_example.html](examples/brochure_example.html)** |
+| Phase 4 しおり | かっこいい HTML を生成 | **[🖼 画像で見る](examples/brochure_example.png)** ／ [HTMLソース](examples/brochure_example.html) |
 
-➡️ まずは **[完成しおりの見本](examples/brochure_example.html)**（親友とローマ＆フィレンツェ5泊6日）を開いてみてください。
+➡️ 完成イメージは上の画像（[全体PNG](examples/brochure_example.png)）の通り。
+地図リンクやPDF保存ボタンが動く**インタラクティブ版**を見たいときは、GitHub上のHTMLは“ソース表示”になってしまうので、次のどちらかで開いてください：
+- **htmlpreview**（設定不要）：`https://htmlpreview.github.io/?https://github.com/<ユーザー名>/tabicraft/blob/main/examples/brochure_example.html`（`<ユーザー名>`を自分のGitHubアカウントに置換）
+- リポジトリを clone して `examples/brochure_example.html` をブラウザで開く
 
 ---
 
