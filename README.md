@@ -63,7 +63,7 @@
 | 段階 | やること | 出力例 |
 |---|---|---|
 | Phase 0 プロファイル | 好みを学習・蓄積（使うほど賢く） | [profile_example.md](examples/profile_example.md) |
-| 入力 wishlist | 行きたい所・食べたい物を列挙 | [wishlist_example.md](examples/wishlist_example.md) |
+| 入力 wishlist | 外せないもの・行きたい所（カテゴリ分け）・宿の条件＆候補名・食・個人メモまで自由に | [wishlist_example.md](examples/wishlist_example.md) |
 | Phase 1 基本情報 | 行き先・泊数・到着/帰宅を確定 | [trip-basics_example.md](examples/trip-basics_example.md) |
 | Phase 2 組み合わせ | 案を多数生成＋気づき提案＋主要スポットの簡単ガイド | [combinations_example.md](examples/combinations_example.md) ／ 共有用 [提案プラン集（PDF）](examples/提案プラン集_example.pdf) |
 | ↳ スポット調査表 | 調べた所要時間・金額・アクセス・方角を表に蓄積し再利用 | [spots_example.md](examples/spots_example.md) |
