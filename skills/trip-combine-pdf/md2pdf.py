@@ -19,10 +19,40 @@ import os
 import re
 import subprocess
 import sys
+import base64
+
+# 画像のソースディレクトリ（main で設定）。画像パス解決の基準。
+SRC_DIR = ""
+
+_MIME = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
+         ".webp": "image/webp", ".gif": "image/gif", ".svg": "image/svg+xml"}
+
+def _embed_image(srcpath: str):
+    """画像パスを解決し base64 データURIで返す。見つからなければ None。"""
+    candidates = [srcpath]
+    if SRC_DIR:
+        candidates.append(os.path.join(SRC_DIR, srcpath))
+    for p in candidates:
+        if os.path.isfile(p):
+            ext = os.path.splitext(p)[1].lower()
+            with open(p, "rb") as f:
+                b64 = base64.b64encode(f.read()).decode()
+            return f"data:{_MIME.get(ext, 'image/png')};base64,{b64}"
+    return None
+
 
 # ──────────────────────────── インライン変換 ────────────────────────────
 def inline(text: str) -> str:
     text = html.escape(text, quote=False)
+    # 画像 ![alt](src) → <img>（base64埋め込み。リンク処理より前に行う）
+    def _img(m):
+        alt = m.group(1)
+        data = _embed_image(m.group(2).strip())
+        src = data if data else m.group(2).strip()
+        return (f'<img src="{src}" alt="{alt}" '
+                f'style="max-width:100%;height:auto;display:block;'
+                f'margin:12px auto;border-radius:10px;border:1px solid var(--line)">')
+    text = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", _img, text)
     # インラインコード `code`
     text = re.sub(r"`([^`]+)`", r"<code>\1</code>", text)
     # リンク [text](url)
@@ -249,6 +279,9 @@ def main():
         sys.exit(f"入力Markdownが見つかりません: {src}")
     out_pdf = sys.argv[2] if len(sys.argv) > 2 else os.path.splitext(src)[0] + ".pdf"
     os.makedirs(os.path.dirname(os.path.abspath(out_pdf)), exist_ok=True)
+
+    global SRC_DIR
+    SRC_DIR = os.path.dirname(os.path.abspath(src))
 
     with open(src, encoding="utf-8") as f:
         md = f.read()
